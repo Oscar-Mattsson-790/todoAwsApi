@@ -7,7 +7,7 @@ provider:
   profile: oscar.mattsson
   region: eu-north-1
   iam:
-    role: arn:aws:iam::785567638763:role/lecture-role
+    role: arn:aws:iam::785567638763:role/oscar-role
 
 plugins:
   - serverless-webpack
