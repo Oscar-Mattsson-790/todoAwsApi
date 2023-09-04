@@ -1,0 +1,42 @@
+service: todoAwsApi
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  profile: oscar.mattsson
+  region: eu-north-1
+  iam:
+    role: arn:aws:iam::785567638763:role/lecture-role
+
+plugins:
+  - serverless-webpack
+
+package:
+  individually: true
+
+functions:
+  getTodo:
+    handler: functions/getTodo/index.handler
+    events:
+      - httpApi:
+          path: "/api/todos"
+          method: GET
+  postTodo:
+    handler: functions/postTodo/index.handler
+    events:
+      - httpApi:
+          path: "/api/todos"
+          method: POST
+  updateTodo:
+    handler: functions/updateTodo/index.handler
+    events:
+      - httpApi:
+          path: "/api/todos/{id}"
+          method: PUT
+  deleteTodo:
+    handler: functions/deleteTodo/index.handler
+    events:
+      - httpApi:
+          path: "/api/todos/{id}"
+          method: DELETE
