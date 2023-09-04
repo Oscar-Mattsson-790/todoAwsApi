@@ -1,16 +1,16 @@
 const { sendResponse, sendError } = require("../../responses/index");
+const { db } = require("../../services/db");
 
 exports.handler = async (event, context) => {
-  let todos = [
-    {
-      id: "1",
-      task: "Test the API",
-    },
-    {
-      id: "2",
-      task: "Create a function",
-    },
-  ];
+  const params = {
+    TableName: "todos-db",
+  };
 
-  return sendResponse(200, todos);
+  try {
+    const result = await db.scan(params).promise();
+    const todos = result.Items || [];
+    return sendResponse(200, todos);
+  } catch (error) {
+    return sendError(500, { error: "Internal Server Error" });
+  }
 };

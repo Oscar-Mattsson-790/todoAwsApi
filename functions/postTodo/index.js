@@ -11,7 +11,7 @@ exports.handler = async (event, context) => {
   };
 
   const params = {
-    TableName: "todos-db", // Use your actual table name
+    TableName: "todos-db",
     Item: newTodo,
   };
 
