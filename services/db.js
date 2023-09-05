@@ -5,3 +5,5 @@ const db = new DocumentClient({
 });
 
 module.exports = { db };
+
+// hej

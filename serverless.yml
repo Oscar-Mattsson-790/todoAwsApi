@@ -4,10 +4,11 @@ frameworkVersion: "3"
 provider:
   name: aws
   runtime: nodejs18.x
-  profile: oscar.mattsson
+  profile: mattsson-oscar
   region: eu-north-1
   iam:
-    role: arn:aws:iam::785567638763:role/oscar-role
+    role: arn:aws:iam::785567638763:role/oscar-mattsson
+  deploymentMethod: direct
 
 plugins:
   - serverless-webpack
